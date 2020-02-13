@@ -1,0 +1,108 @@
+syntax = "proto2";
+package tflite_dynamic;
+
+/* =========================================================================================================
+   INSTANCE STATUS
+ */
+
+enum InstanceStatus {
+    READY = 0;
+}
+
+message InstanceInfo {
+    required string id = 1;
+    required string name = 2;
+    repeated string adminIds = 3;
+    repeated string participantIds = 4;
+}
+
+message Request {
+    oneof request {
+        GetStatusRequest getStatusRequest = 1;
+        bytes tfliteRequest = 2; // encrypted TfliteRequest
+    }
+}
+
+message TfliteRequest {
+    oneof tflite_request {
+        UploadModelRequest uploadModel = 1;
+        InferenceRequest inference = 2;
+        GetModelFormatRequest getModelFormat = 3;
+    }
+}
+
+message TfliteResponse {
+    oneof tflite_response {
+        string failure = 1;
+        UploadModelResponse uploadModel = 2;
+        InferenceResponse inference = 3;
+        GetModelFormatResponse getModelFormat = 4;
+    }
+}
+
+message SuccessfulResponse {
+    oneof successful_response {
+        InitResponse initResponse = 1;
+        ShutDownResponse shutDownResponse = 2;
+        GetStatusResponse getStatusResponse = 3;
+        bytes tfliteResponse = 4; // encrypted TfliteResponse
+    }
+}
+
+/* =========================================================================================================
+   INIT
+ */
+
+message InitResponse {
+}
+
+/* =========================================================================================================
+   GET STATUS
+ */
+
+message GetStatusRequest {
+};
+
+message GetStatusResponse {
+    required InstanceInfo instanceInfo = 1;
+    required InstanceStatus instanceStatus = 2;
+}
+
+message GetModelFormatRequest {
+}
+
+message GetModelFormatResponse {
+    required ModelFormat modelFormat = 1;
+}
+
+message UploadModelRequest {
+    required bytes model = 1;
+}
+
+message UploadModelResponse {
+}
+
+message InferenceResponse {
+    required bytes output = 1;
+}
+
+message InferenceRequest {
+    required bytes input = 1;
+}
+
+message ShutDownResponse {
+}
+
+message ModelFormat {
+    required bytes modelSha256 = 1;
+    required int32 modelSize = 2; // Size of the model in bytes
+    required int32 arenaSize = 3;
+    repeated TensorFormat inputTensorFormats = 4;
+    repeated TensorFormat outputTensorFormats = 5;
+}
+
+message TensorFormat {
+    repeated int32 dimensions = 1;
+    required string valueType = 2;
+    required int32 size = 3;
+}

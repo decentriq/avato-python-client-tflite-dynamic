@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "avato-tflite-dynamic"
+version = "0.1.0"
+description = "Python client library for the TFLite dynamic instance of the avato platform"
+authors = ["decentriq <opensource@decentriq.ch>"]
+readme = 'README.md'
+repository = "https://github.com/decentriq/avato-python-client-tflite"
+homepage = "https://github.com/decentriq/avato-python-client-tflite"
+
+[tool.poetry.dependencies]
+python = "3.7.*"
+avato = "^0.2.0"
+numpy = "^1.18.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.3.1"
