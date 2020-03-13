@@ -85,6 +85,8 @@ class TFLITEDYNAMIC_Instance(Instance):
         response = self._send_message(message)
         tflite_response = TfliteResponse()
         tflite_response.ParseFromString(bytes(response))
+        if tflite_response.HasField("failure"):
+             raise Exception(tflite_response.failure)
         return tflite_response
 
 

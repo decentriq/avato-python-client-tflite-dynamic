@@ -18,7 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='tflite_dynamic',
   syntax='proto2',
   serialized_options=None,
-  serialized_pb=b'\n\x14tflite_dynamic.proto\x12\x0etflite_dynamic\"\xd4\x01\n\rTfliteRequest\x12\x39\n\x0buploadModel\x18\x01 \x01(\x0b\x32\".tflite_dynamic.UploadModelRequestH\x00\x12\x35\n\tinference\x18\x02 \x01(\x0b\x32 .tflite_dynamic.InferenceRequestH\x00\x12?\n\x0egetModelFormat\x18\x03 \x01(\x0b\x32%.tflite_dynamic.GetModelFormatRequestH\x00\x42\x10\n\x0etflite_request\"\xd9\x01\n\x0eTfliteResponse\x12:\n\x0buploadModel\x18\x01 \x01(\x0b\x32#.tflite_dynamic.UploadModelResponseH\x00\x12\x36\n\tinference\x18\x02 \x01(\x0b\x32!.tflite_dynamic.InferenceResponseH\x00\x12@\n\x0egetModelFormat\x18\x03 \x01(\x0b\x32&.tflite_dynamic.GetModelFormatResponseH\x00\x42\x11\n\x0ftflite_response\"\x17\n\x15GetModelFormatRequest\"J\n\x16GetModelFormatResponse\x12\x30\n\x0bmodelFormat\x18\x01 \x02(\x0b\x32\x1b.tflite_dynamic.ModelFormat\"\xbd\x01\n\x0bModelFormat\x12\x13\n\x0bmodelSha256\x18\x01 \x02(\x0c\x12\x11\n\tmodelSize\x18\x02 \x02(\x05\x12\x11\n\tarenaSize\x18\x03 \x02(\x05\x12\x38\n\x12inputTensorFormats\x18\x04 \x03(\x0b\x32\x1c.tflite_dynamic.TensorFormat\x12\x39\n\x13outputTensorFormats\x18\x05 \x03(\x0b\x32\x1c.tflite_dynamic.TensorFormat\"C\n\x0cTensorFormat\x12\x12\n\ndimensions\x18\x01 \x03(\x05\x12\x11\n\tvalueType\x18\x02 \x02(\t\x12\x0c\n\x04size\x18\x03 \x02(\x05\"#\n\x12UploadModelRequest\x12\r\n\x05model\x18\x01 \x02(\x0c\"\x15\n\x13UploadModelResponse\"!\n\x10InferenceRequest\x12\r\n\x05input\x18\x01 \x02(\x0c\"#\n\x11InferenceResponse\x12\x0e\n\x06output\x18\x01 \x02(\x0c'
+  serialized_pb=b'\n\x14tflite_dynamic.proto\x12\x0etflite_dynamic\"\xd4\x01\n\rTfliteRequest\x12\x39\n\x0buploadModel\x18\x01 \x01(\x0b\x32\".tflite_dynamic.UploadModelRequestH\x00\x12\x35\n\tinference\x18\x02 \x01(\x0b\x32 .tflite_dynamic.InferenceRequestH\x00\x12?\n\x0egetModelFormat\x18\x03 \x01(\x0b\x32%.tflite_dynamic.GetModelFormatRequestH\x00\x42\x10\n\x0etflite_request\"\xec\x01\n\x0eTfliteResponse\x12\x11\n\x07\x66\x61ilure\x18\x01 \x01(\tH\x00\x12:\n\x0buploadModel\x18\x02 \x01(\x0b\x32#.tflite_dynamic.UploadModelResponseH\x00\x12\x36\n\tinference\x18\x03 \x01(\x0b\x32!.tflite_dynamic.InferenceResponseH\x00\x12@\n\x0egetModelFormat\x18\x04 \x01(\x0b\x32&.tflite_dynamic.GetModelFormatResponseH\x00\x42\x11\n\x0ftflite_response\"\x17\n\x15GetModelFormatRequest\"J\n\x16GetModelFormatResponse\x12\x30\n\x0bmodelFormat\x18\x01 \x02(\x0b\x32\x1b.tflite_dynamic.ModelFormat\"\xbd\x01\n\x0bModelFormat\x12\x13\n\x0bmodelSha256\x18\x01 \x02(\x0c\x12\x11\n\tmodelSize\x18\x02 \x02(\x05\x12\x11\n\tarenaSize\x18\x03 \x02(\x05\x12\x38\n\x12inputTensorFormats\x18\x04 \x03(\x0b\x32\x1c.tflite_dynamic.TensorFormat\x12\x39\n\x13outputTensorFormats\x18\x05 \x03(\x0b\x32\x1c.tflite_dynamic.TensorFormat\"C\n\x0cTensorFormat\x12\x12\n\ndimensions\x18\x01 \x03(\x05\x12\x11\n\tvalueType\x18\x02 \x02(\t\x12\x0c\n\x04size\x18\x03 \x02(\x05\"#\n\x12UploadModelRequest\x12\r\n\x05model\x18\x01 \x02(\x0c\"\x15\n\x13UploadModelResponse\"!\n\x10InferenceRequest\x12\r\n\x05input\x18\x01 \x02(\x0c\"#\n\x11InferenceResponse\x12\x0e\n\x06output\x18\x01 \x02(\x0c'
 )
 
 
@@ -80,22 +80,29 @@ _TFLITERESPONSE = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='uploadModel', full_name='tflite_dynamic.TfliteResponse.uploadModel', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
+      name='failure', full_name='tflite_dynamic.TfliteResponse.failure', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='inference', full_name='tflite_dynamic.TfliteResponse.inference', index=1,
+      name='uploadModel', full_name='tflite_dynamic.TfliteResponse.uploadModel', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='getModelFormat', full_name='tflite_dynamic.TfliteResponse.getModelFormat', index=2,
+      name='inference', full_name='tflite_dynamic.TfliteResponse.inference', index=2,
       number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='getModelFormat', full_name='tflite_dynamic.TfliteResponse.getModelFormat', index=3,
+      number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -116,7 +123,7 @@ _TFLITERESPONSE = _descriptor.Descriptor(
       index=0, containing_type=None, fields=[]),
   ],
   serialized_start=256,
-  serialized_end=473,
+  serialized_end=492,
 )
 
 
@@ -139,8 +146,8 @@ _GETMODELFORMATREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=475,
-  serialized_end=498,
+  serialized_start=494,
+  serialized_end=517,
 )
 
 
@@ -170,8 +177,8 @@ _GETMODELFORMATRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=500,
-  serialized_end=574,
+  serialized_start=519,
+  serialized_end=593,
 )
 
 
@@ -229,8 +236,8 @@ _MODELFORMAT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=577,
-  serialized_end=766,
+  serialized_start=596,
+  serialized_end=785,
 )
 
 
@@ -274,8 +281,8 @@ _TENSORFORMAT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=768,
-  serialized_end=835,
+  serialized_start=787,
+  serialized_end=854,
 )
 
 
@@ -305,8 +312,8 @@ _UPLOADMODELREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=837,
-  serialized_end=872,
+  serialized_start=856,
+  serialized_end=891,
 )
 
 
@@ -329,8 +336,8 @@ _UPLOADMODELRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=874,
-  serialized_end=895,
+  serialized_start=893,
+  serialized_end=914,
 )
 
 
@@ -360,8 +367,8 @@ _INFERENCEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=897,
-  serialized_end=930,
+  serialized_start=916,
+  serialized_end=949,
 )
 
 
@@ -391,8 +398,8 @@ _INFERENCERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=932,
-  serialized_end=967,
+  serialized_start=951,
+  serialized_end=986,
 )
 
 _TFLITEREQUEST.fields_by_name['uploadModel'].message_type = _UPLOADMODELREQUEST
@@ -410,6 +417,9 @@ _TFLITEREQUEST.fields_by_name['getModelFormat'].containing_oneof = _TFLITEREQUES
 _TFLITERESPONSE.fields_by_name['uploadModel'].message_type = _UPLOADMODELRESPONSE
 _TFLITERESPONSE.fields_by_name['inference'].message_type = _INFERENCERESPONSE
 _TFLITERESPONSE.fields_by_name['getModelFormat'].message_type = _GETMODELFORMATRESPONSE
+_TFLITERESPONSE.oneofs_by_name['tflite_response'].fields.append(
+  _TFLITERESPONSE.fields_by_name['failure'])
+_TFLITERESPONSE.fields_by_name['failure'].containing_oneof = _TFLITERESPONSE.oneofs_by_name['tflite_response']
 _TFLITERESPONSE.oneofs_by_name['tflite_response'].fields.append(
   _TFLITERESPONSE.fields_by_name['uploadModel'])
 _TFLITERESPONSE.fields_by_name['uploadModel'].containing_oneof = _TFLITERESPONSE.oneofs_by_name['tflite_response']

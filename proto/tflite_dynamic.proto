@@ -11,9 +11,10 @@ message TfliteRequest {
 
 message TfliteResponse {
     oneof tflite_response {
-        UploadModelResponse uploadModel = 1;
-        InferenceResponse inference = 2;
-        GetModelFormatResponse getModelFormat = 3;
+        string failure = 1;
+        UploadModelResponse uploadModel = 2;
+        InferenceResponse inference = 3;
+        GetModelFormatResponse getModelFormat = 4;
     }
 }
 
