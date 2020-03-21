@@ -53,5 +53,6 @@ def test_tflite_dynamic_complete():
         offset += input_format.size
 
     # cleanup
+    inference_requestor_instance.shutdown()
     inference_requestor_instance.delete()
     assert inference_requestor_instance.id not in inference_requestor.get_instances()
