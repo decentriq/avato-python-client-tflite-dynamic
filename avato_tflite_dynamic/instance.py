@@ -9,28 +9,19 @@ from .proto.tflite_dynamic_pb2 import (
     TfliteResponse,
     TfliteRequest,
 )
-from .endpoints import Endpoints
 
 
 class TFLITEDYNAMIC_Instance(Instance):
-    class Status(IntEnum):
-        READY = 0
-
     @classmethod
     def get_type(cls):
         return "TFLITE_DYNAMIC"
-
-    def get_status(self):
-        info = self.get_info()
-        status = info["instanceStatus"]
-        return TFLITEDYNAMIC_Instance.Status(status)
 
     @Instance._secret_required
     @Instance._valid_fatquote_required
     def upload_model(self, model):
         request = TfliteRequest()
         request.uploadModel.model = model
-        response = self._send_message(request)
+        response = self._send_and_parse_message(request)
         if not response.HasField("uploadModel"):
             raise Exception(
                 "Expected uploadModel response, got "
@@ -42,7 +33,7 @@ class TFLITEDYNAMIC_Instance(Instance):
     def get_model_format(self):
         request = TfliteRequest()
         request.getModelFormat.SetInParent()
-        response = self._send_message(request)
+        response = self._send_and_parse_message(request)
         if not response.HasField("getModelFormat"):
             raise Exception(
                 "Expected getModelFormat response, got "
@@ -82,7 +73,7 @@ class TFLITEDYNAMIC_Instance(Instance):
     def _request_inference(self, inference_inputs):
         request = TfliteRequest()
         request.inference.input = inference_inputs
-        response = self._send_message(request)
+        response = self._send_and_parse_message(request)
         if not response.HasField("inference"):
             raise Exception(
                 "Expected inference response, got "
@@ -90,17 +81,12 @@ class TFLITEDYNAMIC_Instance(Instance):
             )
         return response.inference.output
 
-    def _send_message(self, message):
-        encrypted = self._encrypt_and_encode_data(message.SerializeToString())
-        url = Endpoints.POST_DYNAMIC_MESSAGE.replace(":instanceId", self.id)
-        response = self.api.post(
-            url, encrypted, {"Content-Type": "application/octet-stream"},
-        )
-        decrypted_response = self._decode_and_decrypt_data(response.content)
+    def _send_and_parse_message(self, message):
+        response = self._send_message(message)
         tflite_response = TfliteResponse()
-        tflite_response.ParseFromString(bytes(decrypted_response))
+        tflite_response.ParseFromString(bytes(response))
         if tflite_response.HasField("failure"):
-            raise Exception(tflite_response.failure)
+             raise Exception(tflite_response.failure)
         return tflite_response
 
 
