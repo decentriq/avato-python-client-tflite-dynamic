@@ -8,5 +8,5 @@ def tests(session):
         "TEST_USER_PASSWORD": os.environ["TEST_USER_PASSWORD"],
     }
     session.install("pytest")
-    session.run("pip", "install", "--no-use-pep517", "-e", ".")
+    session.run("pip", "install", ".")
     session.run("pytest", "tests/", env=env)
