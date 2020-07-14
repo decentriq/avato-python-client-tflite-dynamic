@@ -82,9 +82,8 @@ class TFLITEDYNAMIC_Instance(Instance):
         return response.inference.output
 
     def _send_and_parse_message(self, message):
-        response = self._send_message(message)
         tflite_response = TfliteResponse()
-        tflite_response.ParseFromString(bytes(response))
+        response = self._send_message(message, tflite_response)
         if tflite_response.HasField("failure"):
              raise Exception(tflite_response.failure)
         return tflite_response
