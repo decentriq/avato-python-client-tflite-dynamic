@@ -13,16 +13,16 @@ with open(os.path.join(fixtures_dir, "cifar10-dataset-small.bin"), "rb") as f:
 with open(os.path.join(fixtures_dir, "cifar10-model.fb"), "rb") as f:
     model = f.read()
 
-inference_requestor = Client(username=os.environ["TEST_USER_ID"], password=os.environ["TEST_USER_PASSWORD"], instance_types=[TFLITEDYNAMIC_Instance])
+inference_requestor = Client(api_token=os.environ["TEST_API_TOKEN_1"], instance_types=[TFLITEDYNAMIC_Instance])
 inference_requestor_secret = Secret()
 
 
 def test_tflite_dynamic_complete():
     # inference requestor creates instance and includes model provider
     inference_requestor_instance = inference_requestor.create_instance(
-        "Tensorflow Lite Dynamic", TFLITEDYNAMIC_Instance.type, [inference_requestor.user.email]
+        "Tensorflow Lite Dynamic", TFLITEDYNAMIC_Instance.type, []
     )
-    assert inference_requestor_instance.id in inference_requestor.get_instances()
+    assert inference_requestor_instance.id in list(map(lambda x: x["id"], inference_requestor.get_instances()))
 
     # inference requestor validates fatquote and get enclave pubkey
     inference_requestor_instance.validate_fatquote(
@@ -55,4 +55,4 @@ def test_tflite_dynamic_complete():
     # cleanup
     inference_requestor_instance.shutdown()
     inference_requestor_instance.delete()
-    assert inference_requestor_instance.id not in inference_requestor.get_instances()
+    assert inference_requestor_instance.id not in list(map(lambda x: x["id"], inference_requestor.get_instances()))

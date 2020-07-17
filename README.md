@@ -43,8 +43,7 @@ from avato import Client
 from avato_tflite_dynamic import TFLITEDYNAMIC_Instance
 
 client = Client(
-    username="avato@decentriq.ch",
-    password="password",
+    api_token="SECRET_TOKEN",
     instance_types=[TFLITEDYNAMIC_Instance]
 )
 instance = client.create_instance(
