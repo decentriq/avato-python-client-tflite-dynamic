@@ -34,7 +34,7 @@ description = "Python client library for the Avato platform"
 name = "avato"
 optional = false
 python-versions = ">=3.6,<4.0"
-version = "0.5.0"
+version = "0.5.1"
 
 [package.dependencies]
 asn1crypto = ">=1.2.0,<2.0.0"
@@ -309,8 +309,7 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "65f7e95df523ec291fe0e9fea9968ef747d597ac70995e5a0b9e96907533eab4"
-lock-version = "1.0"
+content-hash = "55011c7b1e3998b2c6a6f4982f002d49d246cf490698d119122a6ef7f67a4568"
 python-versions = "^3.6"
 
 [metadata.files]
@@ -327,8 +326,8 @@ attrs = [
     {file = "attrs-20.1.0.tar.gz", hash = "sha256:0ef97238856430dcf9228e07f316aefc17e8939fc8507e18c6501b761ef1a42a"},
 ]
 avato = [
-    {file = "avato-0.5.0-py3-none-any.whl", hash = "sha256:f19427e82cce26d9a67093da98a88b2fcfbad4e133b478b853115d05f6aee91e"},
-    {file = "avato-0.5.0.tar.gz", hash = "sha256:fa9e322c3383eac2b286a69b774464ca5c764bdcc07828b87e22914cd46b47cf"},
+    {file = "avato-0.5.1-py3-none-any.whl", hash = "sha256:77bfa37c4aeb67f5a7302ccccfde698129e0850ef8e5bb9441ae6a22b702455b"},
+    {file = "avato-0.5.1.tar.gz", hash = "sha256:e40bf4ee1f6fad8c681cffb28e256f1dba976ef2f5d036ca7777c80c5312bcc5"},
 ]
 certifi = [
     {file = "certifi-2020.6.20-py2.py3-none-any.whl", hash = "sha256:8fc0819f1f30ba15bdb34cceffb9ef04d99f420f68eb75d901e9560b8749fc41"},
