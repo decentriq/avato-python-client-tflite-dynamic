@@ -1,0 +1,5 @@
+avato>=0.5.2
+avato-tflite-dynamic>=0.3.0
+jupyter>=1.0
+tensorflow>=2.1
+matplotlib>=3.3
