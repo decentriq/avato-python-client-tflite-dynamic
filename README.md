@@ -4,16 +4,29 @@ Python client library for TFLite dynamic instance of the Avato platform.
 
 ## Installation
 
+### Prerequisites
+
+You need to have Python >= 3.6.1 installed (check using `python --version`) and internet access.
+
+### Release
+
+The library is published on PyPi so it can be easily installed by running:
+```
+pip install avato-tflite-dynamic
+```
+
+### Development
+
 After cloning the repository you can use different installation methods:
 
-### Poetry
+#### Poetry
 
 To install with poetry just run:
 ```
 poetry install
 ```
 
-#### Notes:
+##### Notes:
 
 1. If you get an error during the installation try to delete the `poetry.lock` file
 
@@ -24,7 +37,7 @@ global python installation disable virtualenvs in poetry
 poetry config settings.virtualenvs.create false
 ```
 
-### Pip
+#### Pip
 
 To install with pip just run:
 
@@ -50,9 +63,13 @@ instance = client.create_instance(
     "genesis", TFLITEDYNAMIC_Instance.type, ["friend@decentriq.ch"]
 )
 client.get_instances()
+instance.shutdown()
 instance.delete()
 ```
 
+### Examples
+
+Some examples showing how the library can be used are provided in the `examples` folder.
 For more examples check out the `tests` directory
 
 
