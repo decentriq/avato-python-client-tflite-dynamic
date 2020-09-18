@@ -17,7 +17,6 @@ You need to have Python >=3.6 installed (check using `python --version`) and int
 ### Run examples
 
 Make sure you have the correct Python environment activated. If you just followed the instructions above it's already set. Otherwise you may have to run `source .env/bin/activate` again.
-
 Set the trial user credentials via
 
 ```
